@@ -57,7 +57,7 @@ ROOT_URLCONF = 'INT2018.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'dashboard/templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -124,16 +124,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = "/mediafolder/"
 
-STATIC_URL = '/static/'
-
-MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafolder")
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfolder")
 ]
+
+LOGIN_REDIRECT_URL = '/dashboard/login'
 
 CSRF_COOKIE_HTTPONLY = False
 
