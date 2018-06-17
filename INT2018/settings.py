@@ -130,6 +130,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfolder")
 ]
 
+LOGIN_REDIRECT_URL = '/dashboard/login'
+
 CSRF_COOKIE_HTTPONLY = False
 
 # Global martor settings
