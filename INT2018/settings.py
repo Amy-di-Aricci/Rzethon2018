@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'INT.apps.IntConfig',
     'dashboard.apps.DashboardConfig',
-    'martor'
+    'martor',
+    'django_nose'
 ]
 
 MIDDLEWARE = [
@@ -177,3 +178,12 @@ MARTOR_SEARCH_USERS_URL = '/martor/search-user/' # default
 # Markdown Extensions
 MARTOR_MARKDOWN_BASE_EMOJI_URL = 'https://assets-cdn.github.com/images/icons/emoji/' # default
 MARTOR_MARKDOWN_BASE_MENTION_URL = 'https://python.web.id/author/' # default (change this)
+
+# Use nose to run all tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+# Tell nose to measure coverage on the 'foo' and 'bar' apps
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=foo,bar',
+]
