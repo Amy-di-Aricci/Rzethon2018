@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'INT.apps.IntConfig',
     'dashboard.apps.DashboardConfig',
     'martor',
-    'django_nose'
+    'django_nose',
+    'rest_framework',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -187,3 +189,12 @@ NOSE_ARGS = [
     '--with-coverage',
     '--cover-package=foo,bar',
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
+}
