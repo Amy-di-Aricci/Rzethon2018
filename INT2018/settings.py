@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'martor',
     'django_nose',
     'rest_framework',
-    'django_filters'
+    'django_filters',
+    'restapi'
 ]
 
 MIDDLEWARE = [
