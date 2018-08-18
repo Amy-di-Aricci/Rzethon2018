@@ -25,7 +25,7 @@ SECRET_KEY = '3$(pfqgod+6urddmkha&liipx-tkkh9x)3cc8p^5+%$tg02**b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django_nose',
     'rest_framework',
     'django_filters',
-    'restapi'
+    'restapi',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -198,4 +199,14 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ],
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
+}
+
+ASGI_APPLICATION = "INT2018.routing.application"
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
 }
