@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'restapi',
-    'channels',
 ]
 
 MIDDLEWARE = [
@@ -203,14 +202,4 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     )
-}
-
-ASGI_APPLICATION = "INT2018.routing.application"
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
-        },
-    },
 }

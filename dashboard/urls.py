@@ -8,7 +8,7 @@ from .views import DashboardView, SpeakersView, SpeakerDetailView, \
     PartnerStatusCreateView, PartnerStatusUpdateView, \
     PartnerStatusDeleteView, NewsesView, NewsCreateView, NewsDetailView, \
     NewsUpdateView, NewsDeleteView, PicturesView, PictureCreateView, \
-    PictureDeleteView, DashboardLoginView, DashboardLogoutView, NotifyView
+    PictureDeleteView, DashboardLoginView, DashboardLogoutView
 
 urlpatterns = [
     url(r'^$', DashboardView.as_view(), name='dashboard'),
@@ -45,5 +45,4 @@ urlpatterns = [
     url(r'^pictures$', PicturesView.as_view(), name='picture_list'),
     url(r'^pictures/upload', PictureCreateView.as_view(), name='picture_create'),
     url(r'^pictures/(?P<pk>\d+)/delete$', PictureDeleteView.as_view(), name='picture_delete'),
-    url(r'^notify', NotifyView.as_view(), name='notification')
 ]
