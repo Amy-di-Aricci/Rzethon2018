@@ -551,6 +551,60 @@ class PictureDeleteView(LoginRequiredMixin, DeleteView):
         renderer = JSONRenderer()
         renderer.charset = "utf-8"
         json = renderer.render(serializer.data).decode("utf-8")
-        change_object = Change.objects.create(model="Picture", type_of_change="delete", content=json)
+        change_object = Change.objects.create(model="Picture",
+                                              type_of_change="delete",
+                                              content=json)
+        self.object.delete()
+        return HttpResponseRedirect(success_url)
+
+
+class PhotoView(LoginRequiredMixin, ListView):
+    model = Photo
+    template_name = 'dashboard/gallery/list.html'
+    context_object_name = 'gallery'
+    queryset = Photo.objects.all().reverse()
+    login_url = LOGIN_URL
+
+
+class PhotoCreateView(LoginRequiredMixin, CreateView):
+    model = Photo
+    template_name = 'dashboard/gallery/create.html'
+    fields = ['source']
+    success_url = '/dashboard/gallery'
+    login_url = LOGIN_URL
+
+    def get_context_data(self, **kwargs):
+        context = super(PhotoCreateView, self).get_context_data(**kwargs)
+        context['isEdited'] = False
+        return context
+
+    def form_valid(self, form):
+        self.object = form.save()
+        serializer = PictureSerializer(self.object)
+        renderer = JSONRenderer()
+        renderer.charset = "utf-8"
+        json = renderer.render(serializer.data).decode("utf-8")
+        change_object = Change.objects.create(model="Photo",
+                                              type_of_change="create",
+                                              content=json)
+        return HttpResponseRedirect(self.get_success_url())
+
+
+class PhotoDeleteView(LoginRequiredMixin, DeleteView):
+    model = Photo
+    template_name = 'dashboard/gallery/delete.html'
+    success_url = '/dashboard/gallery'
+    login_url = LOGIN_URL
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        serializer = PictureSerializer(self.object)
+        renderer = JSONRenderer()
+        renderer.charset = "utf-8"
+        json = renderer.render(serializer.data).decode("utf-8")
+        change_object = Change.objects.create(model="Photo",
+                                              type_of_change="delete",
+                                              content=json)
         self.object.delete()
         return HttpResponseRedirect(success_url)
