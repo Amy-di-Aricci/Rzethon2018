@@ -2,17 +2,33 @@
 {% load listutil %}
 {% load static %}
 {% block content %}
-            <div class="section int-light-grey scrollspy" id="about">
+    <div class="section int-light-grey scrollspy" id="lectures">
                 <div class="row container blue-grey-text text-darken-4">
-                    <h2 class="header center">O KONFERENCJI</h2>
-                    <div style="text-align: justify">
-                        <p>INnovation Technology Conference (INT C) to wyjątkowe wydarzenie organizowane przez studentów Politechniki Rzeszowskiej, a dokładniej przez członków dwóch Kół Naukowych: Elektroniki i Technologii Informacyjnych (Rzeszowska Grupa IT) oraz Informatyków KOD (Rzeszowska Grupa.NET).</p>
-                        <p>Konferencja ta ma na celu zachęcić młodych miłośników branży IT do dalszego rozwoju w tym kierunku oraz wyjść naprzeciw oczekiwaniom współczesnego rynku pracy na podkarpaciu. Jeśli jesteś jednym z IT maniaków to wydarzenie to jest właśnie dla Ciebie!</p>
-                        <p>Nie ważne czy jesteś uczniem szkoły średniej, studiujesz na pierwszym lub na ostatnim roku – już teraz zadbaj o swoją przyszłość i weź udział w INnovation Technology Conference!</p>
+                    <h2 class="header center">AGENDA</h2>
+                    <div class="row fl">
+                        <div class="col m12">
+                            {% for lecture in lectures|rows:"1"|first %}
+                            <h6><i class="fa fa-clock-o" aria-hidden="false"></i> {{lecture.begin_time|time:"H:i"}} - {{lecture.end_time|time:"H:i"}}<span style="margin-left: 4em"></span> <i class="fa fa-building-o" aria-hidden="false"></i> {{lecture.place_id.building_name}}{{lecture.place_id.room_name}}</h6>
+                            <h5>{{lecture.title}}</h5>
+                                <p>
+                                {% for speaker in lecture.speakers.all %}
+                                    <a href="{% url 'FrontSpeakerDetail' speaker.pk %}">{{speaker.name}} {{speaker.surname}}</a>
+                                    {% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                                </p>
+                                <!--{% for s in lecture.speakers.all %}
+                                    {% for speaker in s.speaker_id.all %}
+                                         <p><a href="{% url 'FrontSpeakerDetail' speaker.pk %}">{{speaker.name}} {{speaker.surname}}</a></p>
+                                    {% endfor %}
+                                {% endfor %} -->
+                            <div class="divider"></div>
+                            {% endfor %}
+                        </div>
 
                     </div>
                 </div>
             </div>
+
             <div class="section int-dark-grey scrollspy" id="place">
                 <div class="row container blue-grey-text text-lighten-5">
                     <h2 class="header center">MIEJSCE</h2>
@@ -35,45 +51,7 @@
                     </div>
                 </div>
             </div>
-            <div class="section int-light-grey scrollspy" id="lectures">
-                <div class="row container blue-grey-text text-darken-4">
-                    <h2 class="header center">AGENDA</h2>
-                    <div class="row fl">
-                        <div class="col m6">
-                            {% for lecture in lectures|rows:"2"|first %}
-                            <h6><i class="fa fa-clock-o" aria-hidden="false"></i> {{lecture.begin_time|time:"H:i"}} - {{lecture.end_time|time:"H:i"}}<span style="margin-left: 4em"></span> <i class="fa fa-building-o" aria-hidden="false"></i> {{lecture.place_id.building_name}}{{lecture.place_id.room_name}}</h6>
-                            <h5>{{lecture.title}}</h5>
-                                <p>
-                                {% for speaker in lecture.speakers.all %}
-                                    <a href="{% url 'FrontSpeakerDetail' speaker.pk %}">{{speaker.name}} {{speaker.surname}}</a>
-                                    {% if not forloop.last %}, {% endif %}
-                                {% endfor %}
-                                </p>
-                                <!--{% for s in lecture.speakers.all %}
-                                    {% for speaker in s.speaker_id.all %}
-                                         <p><a href="{% url 'FrontSpeakerDetail' speaker.pk %}">{{speaker.name}} {{speaker.surname}}</a></p>
-                                    {% endfor %}
-                                {% endfor %} -->
-                            <div class="divider"></div>
-                            {% endfor %}
-                        </div>
-                        <div class="separator"></div>
-                        <div class="col m6">
-                            {% for lecture in lectures|rows:"2"|last %}
-                            <h6><i class="fa fa-clock-o" aria-hidden="false"></i>{{lecture.begin_time|time:"H:i"}} - {{lecture.end_time|time:"H:i"}}<span style="margin-left: 4em"></span> <i class="fa fa-building-o" aria-hidden="false"></i> {{lecture.place_id.building_name}}{{lecture.place_id.room_name}}</h6>
-                            <h5>{{lecture.title}}</h5>
-                                <p>
-                                {% for speaker in lecture.speakers.all %}
-                                    <a href="{% url 'FrontSpeakerDetail' speaker.pk %}">{{speaker.name}} {{speaker.surname}}</a>
-                                    {% if not forloop.last %}, {% endif %}
-                                {% endfor %}
-                                </p>
-                            <div class="divider"></div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="parallax-container">
                 <div class="parallax"><img src="{% static 'frontpage/img/organizatorzy.jpg' %}"></div>
             </div>
