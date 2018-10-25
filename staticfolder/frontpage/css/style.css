@@ -38,6 +38,16 @@
     color: #9cbf56;
 }
 
+.rzethon-cyan
+{
+    background-color: #68cad5;
+}
+
+.rzethon-pink
+{
+    background-color: #b3519e;
+}
+
 .no-margin-bottom{
     margin-bottom: 0px;
 }
@@ -146,7 +156,7 @@ body{
 	background-position: center 0;
 	background-repeat: repeat-y;
 	background-size: auto auto;
-	background-image: url("../img/bg.png");
+	/*background-image: url("../img/bg.png");*/
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -304,4 +314,12 @@ main {
 .link-kodziarze:focus
 {
     color: #9cbf56 !important;
+}
+
+.bg-rzethon-image
+{
+    /*background-image: url("../img/bg.png");
+    background-repeat: repeat-x;
+    background-origin: border-box;*/
+    background-color: #250340;
 }

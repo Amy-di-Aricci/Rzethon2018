@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta charset="utf-8">
-        <title>INT - The dark side of programming</title>
+        <title>Rzethon</title>
         <link rel="stylesheet" href="{% static 'frontpage/css/style.css' %}">
         <link rel="shortcut icon" href="{% static 'frontpage/img/favicon.ico' %}"/>
     </head>
@@ -24,9 +24,9 @@
                 $('.parallax').parallax();
                 $('.scrollspy').scrollSpy();
             });
-            $(window).on('scroll', function() {
+            /*$(window).on('scroll', function() {
                 smoothBackgroundScroll("{% static 'frontpage/img/bg.png' %}");
-            });
+            });*/
             function smoothBackgroundScroll(imgsrc) {
                 function loadImageHeight(url, width) {
                     var img = new Image();
@@ -65,25 +65,30 @@
             }
         </script>
         <main>
+            <!--<div class="parallax-container">
+                <div class="parallax"><img src="{% static 'frontpage/img/bg.png' %}"></div>
+            </div>-->
+        <div class="bg-rzethon-image">
             <div class="center container">
                     <a href="{% url 'FrontHomepage' %}"><img class="responsive-img logo" src="{% static 'frontpage/img/logo_for_web.png' %}"></a><br>
             </div>
-            <nav class="nav-center bg-blue-1" role="navigation">
+        </div>
+            <nav class="nav-center rzethon-cyan" role="navigation">
                 <div class="nav-wrapper container">
                     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                     <ul class="hide-on-med-and-down">
-                        <li><a href="{% url 'FrontHomepage' %}#place">Miejsce</a></li>
                         <li><a href="{% url 'FrontHomepage' %}#lectures">Agenda</a></li>
+                        <li><a href="{% url 'FrontHomepage' %}#place">Miejsce</a></li>
                         <li><a href="{% url 'FrontHomepage' %}#organizers">Organizatorzy</a></li>
                         <li><a href="{% url 'FrontHomepage' %}#partners">Partnerzy</a></li>
-                        <li><a href="{% url 'FrontNewsList' %}">Aktualności</a></li>
+                        <li><a href="{% url 'FrontGallery' %}">Galeria</a></li>
                     </ul>
                     <ul class="side-nav" id="mobile-demo">
-                        <li><a href="{% url 'FrontHomepage' %}#place">Miejsce</a></li>
                         <li><a href="{% url 'FrontHomepage' %}#lectures">Agenda</a></li>
+                        <li><a href="{% url 'FrontHomepage' %}#place">Miejsce</a></li>
                         <li><a href="{% url 'FrontHomepage' %}#organizers">Organizatorzy</a></li>
                         <li><a href="{% url 'FrontHomepage' %}#partners">Partnerzy</a></li>
-                        <li><a href="{% url 'FrontNewsList' %}">Aktualności</a></li>
+                        <li><a href="{% url 'FrontGallery' %}">Galeria</a></li>
                     </ul>
                 </div>
             </nav>
@@ -91,7 +96,7 @@
             
             {% endblock %}
         </main>
-    <footer class="page-footer bg-blue-1">
+    <footer class="page-footer rzethon-cyan">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">

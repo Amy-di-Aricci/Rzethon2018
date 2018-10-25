@@ -39,5 +39,18 @@ class HomepageView(TemplateView):
         return context
 
 
+class GalleryView(ListView):
+    model = Photo
+    template_name = 'INT/gallery.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(GalleryView, self).get_context_data(**kwargs)
+        years = self.model.objects.order_by('-year').values('year')
+        print(map(lambda d: d['year'], list(years)))
+        context['photos'] = {y: self.model.objects.filter(year=y) for y in map(lambda d: d['year'], list(years))}
+        return context
+
+
+
 class KodziarzeView(TemplateView):
     template_name = 'INT/kodziarze_detail.html'

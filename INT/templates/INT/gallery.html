@@ -1,0 +1,24 @@
+{% extends 'INT/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="gallery-years">
+    {% for y, p in photos.items %}
+        <div class="section {% if forloop.counter|divisibleby:2 %} int-dark-grey {% else %} int-light-grey {% endif %} ">
+        <div class="row container">
+            <h2 class="header center">{{ y }}</h2>
+         <div class="row center">
+        {% for photo in p %}
+            <div class="col m3">
+            <img src="{{ photo.source.url }}" class="materialboxed responsive-img"/>
+            </div>
+            {% if forloop.counter|divisibleby:4 %}
+                </div>
+                <div class="row center">
+            {% endif %}
+        {%  endfor %}
+                 </div>
+        </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
