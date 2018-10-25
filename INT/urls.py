@@ -8,5 +8,6 @@ urlpatterns = [
     url(r"^news/(?P<pk>\d+)$", v.NewsDetailView.as_view(), name="FrontNewsDetail"),
     url(r"^speakers/(?P<pk>\d+)$", v.SpeakerDetailView.as_view(), name="FrontSpeakerDetail"),
     url(r"^company/(?P<pk>\d+)$", v.CompanyDetailView.as_view(), name="FrontCompanyDetail"),
-    url(r"^kodziarze$", v.KodziarzeView.as_view(), name="FrontKodziarze")
+    url(r"^kodziarze$", v.KodziarzeView.as_view(), name="FrontKodziarze"),
+    url(r"^gallery$", v.GalleryView.as_view(), name="FrontGallery")
 ]

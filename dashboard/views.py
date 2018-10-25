@@ -569,7 +569,7 @@ class PhotoView(LoginRequiredMixin, ListView):
 class PhotoCreateView(LoginRequiredMixin, CreateView):
     model = Photo
     template_name = 'dashboard/gallery/create.html'
-    fields = ['source']
+    fields = ['source', 'year']
     success_url = '/dashboard/gallery'
     login_url = LOGIN_URL
 

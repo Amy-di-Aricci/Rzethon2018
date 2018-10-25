@@ -1,0 +1,18 @@
+{% extends 'INT/base.html' %}
+{% load static %}
+{% block content %}
+    {% for y, p in photos.items %}
+        <h1>{{ y }}</h1>
+         <div class="row center">
+        {% for photo in p %}
+            <div class="col m3">
+            <img src="{{ photo.source.url }}" class="materialboxed responsive-img"/>
+            </div>
+            {% if forloop.counter|divisibleby:4 %}
+                </div></div>
+                <div class="row center">
+            {% endif %}
+        {%  endfor %}
+                 </div>
+    {% endfor %}
+{% endblock %}
