@@ -12,7 +12,7 @@ class Place(models.Model):
 
 
 class Picture(models.Model):
-    source = models.ImageField(null=True, blank=True)
+    source = models.ImageField(null=False, blank=True)
 
     """def __str__(self):
         return "%s" % self.pk"""
@@ -85,7 +85,7 @@ class Change(models.Model):
 
 
 class Photo(models.Model):
-    source = models.ImageField(null=True, blank=True)
+    source = models.ImageField(null=False, blank=True)
     year = models.IntegerField(null=False, default=timezone.now().year)
 
     """def __str__(self):
