@@ -4,7 +4,7 @@
     <div class="gallery-years">
     {% for y, p in photos.items %}
         <div class="section {% if forloop.counter|divisibleby:2 %} int-dark-grey {% else %} int-light-grey {% endif %} ">
-        <div class="row container">
+        <div class="row container {% if forloop.counter|divisibleby:2 %} blue-grey-text text-lighten-5 {% else %} blue-grey-text text-darken-4 {% endif %}">
             <h2 class="header center">{{ y }}</h2>
          <div class="row center">
         {% for photo in p %}

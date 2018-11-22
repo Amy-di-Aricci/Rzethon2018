@@ -2,8 +2,8 @@
 {% load listutil %}
 {% load static %}
 {% block content %}
-    <div class="section int-light-grey scrollspy" id="lectures">
-                <div class="row container blue-grey-text text-darken-4">
+    <div class="section int-dark-grey scrollspy" id="lectures">
+                <div class="row container blue-grey-text text-lighten-5">
                     <h2 class="header center">AGENDA</h2>
                     <div class="row fl">
                         <div class="col m12">
@@ -29,8 +29,8 @@
                 </div>
             </div>
 
-            <div class="section int-dark-grey scrollspy" id="place">
-                <div class="row container blue-grey-text text-lighten-5">
+            <div class="section int-light-grey scrollspy" id="place">
+                <div class="row container blue-grey-text text-darken-4">
                     <h2 class="header center">MIEJSCE</h2>
                     <div class="col l6">
                         <h5>
@@ -51,10 +51,10 @@
                     </div>
                 </div>
             </div>
-
+            <!--
             <div class="parallax-container">
                 <div class="parallax"><img src="{% static 'frontpage/img/organizatorzy.jpg' %}"></div>
-            </div>
+            </div> -->
             <div class="section int-dark-grey scrollspy" id="organizers">
                 <div class="row container blue-grey-text text-lighten-5">
                     <h2 class="header center">ORGANIZATORZY</h2>
@@ -72,20 +72,20 @@
                         <div class="col m6 l3">
                             <div class="card">
                                 <div class="card-image">
-                                    <img src="{% static 'frontpage/img/organizatorzy/dolina.jpg' %}">
+                                    <img src="{% static 'frontpage/img/organizatorzy/pti.jpg' %}">
                                 </div>
                                 <div class="card-content blue-grey lighten-5 blue-grey-text text-darken-4">
-                                    <a href="https://www.facebook.com/DolinaWiedzy">Fundacja Wspierania Edukacji przy Stowarzyszeniu Dolina Lotnicza</a>
+                                    <a href="http://www.rzeszow.pti.org.pl/">Polskie Towarzystwo Informatyczne - Oddział Podkarpacki</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col m6 l3">
                             <div class="card">
                                 <div class="card-image">
-                                    <img src="{% static 'frontpage/img/organizatorzy/generator.jpg' %}">
+                                    <img src="{% static 'frontpage/img/organizatorzy/zsz.jpg' %}">
                                 </div>
                                 <div class="card-content blue-grey lighten-5 blue-grey-text text-darken-4">
-                                    <a href="https://www.facebook.com/generatorinspiracji/">Fundacja Generator Inspiracji</a><br>&nbsp;
+                                    <a href="https://zsz.prz.edu.pl/">Zakład Systemów Złożonych</a>&nbsp;
                                 </div>
                             </div>
                         </div>
@@ -108,11 +108,21 @@
                     <div class="row center">
                         <div class="partnercenter">
                             {% for partner in partners %}
-                                <div class="col m2">
-                                    <a href="{% url 'FrontCompanyDetail' partner.pk %}"><img src="{{partner.picture_id.source.url}}" alt="" class="circle responsive-img"></a>
-                                    <a href="{% url 'FrontCompanyDetail' partner.pk %}">{{partner.name}}</a>
+                                <div class="col m6 l3">
+                                    <div class="card">
+                                        <div class="card-image">
+                                            {% if not partner.picture_id %}
+                                            <img src="{% static 'frontpage/img/placeholder.jpg' %}" alt="">
+                                            {% else %}
+                                            <img src="{{partner.picture_id.source.url}}" alt="">
+                                            {% endif %}
+                                        </div>
+                                    <div class="card-content blue-grey darken-2 blue-grey-text text-lighten-5">
+                                        <a>{{partner.name}}</a><br>
+                                    </div>
+                            </div>
                                 </div>
-                                {% if forloop.counter|divisibleby:6 %}
+                                {% if forloop.counter|divisibleby:4 %}
                                     </div></div>
                                     <div class="row center">
                                         <div class="partnercenter">
